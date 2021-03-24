@@ -1,3 +1,6 @@
-import "./style.css";
+import './style.css';
+import datactrl from './modules/datactrl';
 
-console.log('Hello webpack');
+const responseData = datactrl.getWeatherData('Moscow', 'Russia');
+responseData.then((data) => console.log(data));
+
