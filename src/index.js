@@ -1,6 +1,5 @@
 import './style.css';
 import datactrl from './modules/datactrl';
 
-const dataObj = datactrl.returnWeatherData('Moscow', 'Russia');
+datactrl.returnWeatherData('Moscow', 'Russia').then((data) => console.log(data));
 
-console.log(dataObj)
