@@ -1,35 +1,36 @@
 const APIKey = '76844202d073c272c1f0ed75c53fa6aa';
+let units = 'metric';
+let city = 'Moscow';
+let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKey}&units=${units}`;
 
-async function fetchWeatherData(city, country) {
+async function fetchWeatherData() {
   try {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${APIKey}&units=metric`
-    );
-    const responseData = await response.json();
-    return responseData;
+    const response = await fetch(url);
+    const responseCurrent = await response.json();
+    return responseCurrent;
   } catch (error) {
     console.log(error);
   }
 }
 
-async function returnWeatherData(city, country) {
-  const data = await fetchWeatherData(city, country);
+async function returnWeatherData() {
+  const data = await fetchWeatherData();
 
-  return {
+  const currentData = {
     weather: data.weather[0].main,
+    description: data.weather[0].description,
     icon: data.weather[0].icon,
     city: data.name,
     country: data.sys.country,
-    feelsLike: data.main.feels_like,
-    hunidity: data.main.humidity,
-    pressure: data.main.pressure,
+    humidity: data.main.humidity,
     temp: data.main.temp,
-    tempMax: data.main.temp_max,
-    tempMin: data.main.temp_min,
     sunrise: data.sys.sunrise,
     sunset: data.sys.sunset,
     windSpeed: data.wind.speed,
+    feelsLike: data.main.feels_like,
   };
+
+  return currentData;
 }
 
-export default { returnWeatherData, fetchWeatherData };
+export default { returnWeatherData };
