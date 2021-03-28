@@ -19,7 +19,6 @@ async function returnWeatherData() {
   const currentData = {
     weather: data.weather[0].main,
     description: data.weather[0].description,
-    icon: data.weather[0].icon,
     city: data.name,
     country: data.sys.country,
     humidity: data.main.humidity,
