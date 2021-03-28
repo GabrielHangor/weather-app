@@ -13,23 +13,64 @@ async function fetchWeatherData() {
   }
 }
 
-async function returnWeatherData() {
+async function getData() {
   const data = await fetchWeatherData();
 
   const currentData = {
-    weather: data.weather[0].main,
     description: data.weather[0].description,
     city: data.name,
     country: data.sys.country,
     humidity: data.main.humidity,
-    temp: data.main.temp,
+    temp: roundNumber(data.main.temp),
     sunrise: data.sys.sunrise,
     sunset: data.sys.sunset,
     windSpeed: data.wind.speed,
-    feelsLike: data.main.feels_like,
+    feelsLike: roundNumber(data.main.feels_like),
+    dateAndTime: getCurrentDateAndTime(),
   };
 
   return currentData;
 }
 
-export default { returnWeatherData };
+function roundNumber(value) {
+  const roundedNumber = Math.round(value);
+
+  if (roundedNumber === -0) {
+    return 0;
+  } else {
+    return roundedNumber;
+  }
+}
+
+function getCurrentDateAndTime() {
+  const d = new Date();
+
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  const year = d.getFullYear();
+  const date = d.getDate();
+  const month = months[d.getMonth()];
+  const dayName = days[d.getDay()];
+  const hour = d.getHours();
+  const minute = d.getMinutes();
+  const time = `${hour}:${minute}`;
+
+  return { date: `${dayName}, ${date} ${month} ${year}`, time };
+}
+
+export default { getData };
