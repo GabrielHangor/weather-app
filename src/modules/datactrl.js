@@ -1,11 +1,13 @@
 const APIKey = '76844202d073c272c1f0ed75c53fa6aa';
+
 let units = 'metric';
 let city = 'Moscow';
-let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKey}&units=${units}`;
 
 async function fetchWeatherData() {
   try {
-    const response = await fetch(url);
+    const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKey}&units=${units}`
+    );
     const responseCurrent = await response.json();
     return responseCurrent;
   } catch (error) {
@@ -72,9 +74,13 @@ function getCurrentDateAndTime() {
 }
 
 function returnFormattedTime(value) {
-  const time = new Date(value * 1000).toLocaleTimeString();
-  const formattedTime = time.slice(0, 5);
-  return formattedTime;
+  const time = new Date(value * 1000).toLocaleTimeString().slice(0, 5);
+
+  return time;
 }
 
-export default { getData };
+function setNewLocation(value) {
+  city = value;
+}
+
+export default { getData, setNewLocation };
