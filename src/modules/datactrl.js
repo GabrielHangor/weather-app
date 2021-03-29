@@ -22,8 +22,8 @@ async function getData() {
     country: data.sys.country,
     humidity: data.main.humidity,
     temp: roundNumber(data.main.temp),
-    sunrise: data.sys.sunrise,
-    sunset: data.sys.sunset,
+    sunrise: returnFormattedTime(data.sys.sunrise),
+    sunset: returnFormattedTime(data.sys.sunset),
     windSpeed: data.wind.speed,
     feelsLike: roundNumber(data.main.feels_like),
     dateAndTime: getCurrentDateAndTime(),
@@ -66,11 +66,15 @@ function getCurrentDateAndTime() {
   const date = d.getDate();
   const month = months[d.getMonth()];
   const dayName = days[d.getDay()];
-  const hour = d.getHours();
-  const minute = d.getMinutes();
-  const time = `${hour}:${minute}`;
+  const time = d.toLocaleTimeString().slice(0, 5);
 
   return { date: `${dayName}, ${date} ${month} ${year}`, time };
+}
+
+function returnFormattedTime(value) {
+  const time = new Date(value * 1000).toLocaleTimeString();
+  const formattedTime = time.slice(0, 5);
+  return formattedTime;
 }
 
 export default { getData };
