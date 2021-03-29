@@ -1,6 +1,7 @@
 const UISelectors = {
   inputField: document.querySelector('.new-location'),
   searchBtn: document.querySelector('#search-btn'),
+  checkbox: document.querySelector('.checkbox'),
 };
 
 function getUISelectors() {
@@ -11,4 +12,8 @@ function getUserInput() {
   return UISelectors.inputField.value;
 }
 
-export default { getUISelectors, getUserInput };
+function getCheckBoxState() {
+  return UISelectors.checkbox.checked;
+}
+
+export default { getUISelectors, getUserInput, getCheckBoxState };

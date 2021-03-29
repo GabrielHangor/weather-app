@@ -83,4 +83,8 @@ function setNewLocation(value) {
   city = value;
 }
 
-export default { getData, setNewLocation };
+function toggleFahrenheitOrCelsius(value) {
+  value ? (units = 'imperial') : (units = 'metric');
+}
+
+export default { getData, setNewLocation, toggleFahrenheitOrCelsius };
