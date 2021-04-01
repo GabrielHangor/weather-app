@@ -53,6 +53,11 @@ function getLocalTime(offset) {
   const localHours = Number(timeUTC.slice(0, 2)) + offsetHours; // скок часов по местному
   const localTimeArray = timeUTC.split(':');
   localTimeArray.splice(0, 1, localHours.toString());
+
+  if (localTimeArray[0] >= 24) {
+    localTimeArray[0] -= 24;
+  }
+  
   const localTime = localTimeArray.join(':').slice(0, 8);
 
   return localTime;
