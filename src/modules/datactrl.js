@@ -28,7 +28,8 @@ async function getData() {
     sunset: returnFormattedTime(data.sys.sunset),
     windSpeed: data.wind.speed,
     feelsLike: roundNumber(data.main.feels_like),
-    dateAndTime: getCurrentDateAndTime(),
+    date: getCurrentDate(),
+    localTime: getLocalTime(data.timezone),
   };
 
   return currentData;
@@ -44,7 +45,20 @@ function roundNumber(value) {
   }
 }
 
-function getCurrentDateAndTime() {
+function getLocalTime(offset) {
+  // offset - разница с UTC +0 в секундах
+
+  const timeUTC = new Date().toUTCString().slice(17, 25); // часы, минуты, секунды
+  const offsetHours = Math.floor(offset / 3600); // смещение в часах
+  const localHours = Number(timeUTC.slice(0, 2)) + offsetHours; // скок часов по местному
+  const localTimeArray = timeUTC.split(':');
+  localTimeArray.splice(0, 1, localHours.toString());
+  const localTime = localTimeArray.join(':').slice(0, 8);
+
+  return localTime;
+}
+
+function getCurrentDate() {
   const d = new Date();
 
   const months = [
@@ -68,9 +82,8 @@ function getCurrentDateAndTime() {
   const date = d.getDate();
   const month = months[d.getMonth()];
   const dayName = days[d.getDay()];
-  const time = d.toLocaleTimeString().slice(0, 5);
 
-  return { date: `${dayName}, ${date} ${month} ${year}`, time };
+  return `${dayName}, ${date} ${month} ${year}`;
 }
 
 function returnFormattedTime(value) {
