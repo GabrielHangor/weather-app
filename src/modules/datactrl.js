@@ -9,6 +9,7 @@ async function fetchWeatherData() {
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKey}&units=${units}`
     );
     const responseCurrent = await response.json();
+    console.log(responseCurrent);
     return responseCurrent;
   } catch (error) {
     console.log(error);
@@ -21,6 +22,7 @@ async function getData() {
   const currentData = {
     main: data.weather[0].main,
     description: data.weather[0].description,
+    icon: data.weather[0].icon,
     city: data.name,
     country: data.sys.country,
     humidity: data.main.humidity,

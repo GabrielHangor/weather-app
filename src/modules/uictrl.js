@@ -12,6 +12,7 @@ const UISelectors = {
   sunRise: document.querySelector('.sunrise-value'),
   sunSet: document.querySelector('.sunset-value'),
   mainInfo: document.querySelector('.main-info'),
+  weatherIcon: document.querySelector('.weather-icon'),
 };
 
 function getUISelectors() {
@@ -33,16 +34,15 @@ function populateTheDOM(data, units) {
   UISelectors.temp.textContent = units === 'metric' ? `${data.temp}°C` : `${data.temp}°F`;
   UISelectors.feelsLike.textContent =
     units === 'metric' ? `${data.feelsLike}°C` : `${data.feelsLike}°F`;
-  UISelectors.humidity.textContent = data.humidity;
+  UISelectors.humidity.textContent = `${data.humidity}%`;
   UISelectors.windSpeed.textContent =
     units === 'metric' ? `${data.windSpeed}m/s` : `${data.windSpeed}mph`;
   UISelectors.sunRise.textContent = data.sunrise;
   UISelectors.sunSet.textContent = data.sunset;
-}
-
-function appendWeatherPicture(description) {
-  const classNames = [];
-  const descriptions = [];
+  UISelectors.weatherIcon.setAttribute(
+    'src',
+    `http://openweathermap.org/img/wn/${data.icon}@2x.png`
+  );
 }
 
 export default { getUISelectors, getUserInput, getCheckBoxState, populateTheDOM };
