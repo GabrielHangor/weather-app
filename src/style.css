@@ -92,8 +92,7 @@ body {
   align-self: center;
 }
 
-.current-date,
-.current-time {
+.current-date {
   font-size: 1.5rem;
 }
 

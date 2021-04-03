@@ -19,6 +19,7 @@ async function getData() {
   const data = await fetchWeatherData();
 
   const currentData = {
+    main: data.weather[0].main,
     description: data.weather[0].description,
     city: data.name,
     country: data.sys.country,
@@ -29,7 +30,6 @@ async function getData() {
     windSpeed: data.wind.speed,
     feelsLike: roundNumber(data.main.feels_like),
     date: getCurrentDate(),
-    localTime: getLocalTime(data.timezone),
   };
 
   return currentData;
@@ -43,24 +43,6 @@ function roundNumber(value) {
   } else {
     return roundedNumber;
   }
-}
-
-function getLocalTime(offset) {
-  // offset - разница с UTC +0 в секундах
-
-  const timeUTC = new Date().toUTCString().slice(17, 25); // часы, минуты, секунды
-  const offsetHours = Math.floor(offset / 3600); // смещение в часах
-  const localHours = Number(timeUTC.slice(0, 2)) + offsetHours; // скок часов по местному
-  const localTimeArray = timeUTC.split(':');
-  localTimeArray.splice(0, 1, localHours.toString());
-
-  if (localTimeArray[0] >= 24) {
-    localTimeArray[0] -= 24;
-  }
-  
-  const localTime = localTimeArray.join(':').slice(0, 8);
-
-  return localTime;
 }
 
 function getCurrentDate() {
@@ -105,4 +87,13 @@ function toggleFahrenheitOrCelsius(value) {
   value ? (units = 'imperial') : (units = 'metric');
 }
 
-export default { getData, setNewLocation, toggleFahrenheitOrCelsius };
+function getCurrentUnitsSystem() {
+  return units;
+}
+
+export default {
+  getData,
+  setNewLocation,
+  toggleFahrenheitOrCelsius,
+  getCurrentUnitsSystem,
+};
