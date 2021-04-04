@@ -1,1 +1,79 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous"/><title>Weather App</title><script defer="defer" src="main.js"></script></head><body><div class="container"><div class="inner-container"><div class="main-info"><div class="weather-description"></div><div class="city"></div><div class="current-date"></div><div class="temp"></div><img src="" alt="weather-icon" class="weather-icon"></div><div class="secondary-info"><div class="feels-like"><i class="fas fa-temperature-high"></i><div class="temperature-div"><div class="temperature-text">Feels Like</div><div class="temperature"></div></div></div><div class="humidity"><i class="fas fa-tint"></i><div class="humidity-div"><div class="humidity-text">Humidity</div><div class="humidity-value"></div></div></div><div class="wind-speed"><i class="fas fa-wind"></i><div class="wind-div"><div class="wind-speed-text">Wind Speed</div><div class="wind-speed-value"></div></div></div><div class="sunrise"><i class="far fa-sun"></i><div class="sunrise-div"><div class="sunrise-text">Sunrise</div><div class="sunrise-value"></div></div></div><div class="sunset"><i class="fas fa-moon"></i><div class="sunset-div"><div class="sunset-text">Sunset</div><div class="sunset-value"></div></div></div></div></div><div class="input-container"><input class="new-location" placeholder="Search Location"> <i id="search-btn" class="fas fa-search"></i></div><div class="error-container"></div><div class="switch-container"><div class="switch-text">Toggle Fahrenheit</div><label class="switch"><input class="checkbox" type="checkbox"> <span class="slider round"></span></label></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+  <title>Weather App</title>
+<script defer src="main.js"></script></head>
+
+<body>
+  <div class="container">
+    <!-- Container with data -->
+    <div class="inner-container">
+      <div class="main-info">
+        <div class="weather-description"></div>
+        <div class="city"></div>
+        <div class="current-date"></div>
+        <div class="temp"></div>
+        <img src="" alt="weather-icon" class="weather-icon">
+      </div>
+      <div class="secondary-info">
+        <div class="feels-like">
+          <i class="fas fa-temperature-high"></i>
+          <div class="temperature-div">
+            <div class="temperature-text">Feels Like</div>
+            <div class="temperature"></div>
+          </div>
+        </div>
+        <div class="humidity">
+          <i class="fas fa-tint"></i>
+          <div class="humidity-div">
+            <div class="humidity-text">Humidity</div>
+            <div class="humidity-value"></div>
+          </div>
+        </div>
+        <div class="wind-speed">
+          <i class="fas fa-wind"></i>
+          <div class="wind-div">
+            <div class="wind-speed-text">Wind Speed</div>
+            <div class="wind-speed-value"></div>
+          </div>
+        </div>
+        <div class="sunrise">
+          <i class="far fa-sun"></i>
+          <div class="sunrise-div">
+            <div class="sunrise-text">Sunrise</div>
+            <div class="sunrise-value"></div>
+          </div>
+        </div>
+        <div class="sunset">
+          <i class="fas fa-moon"></i>
+          <div class="sunset-div">
+            <div class="sunset-text">Sunset</div>
+            <div class="sunset-value"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Input Container -->
+    <div class="input-container">
+      <input class="new-location" type="text" placeholder="Search Location">
+      <i id="search-btn" class="fas fa-search"></i>
+    </div>
+    <!-- Error Container -->
+    <div class="error-container"></div>
+    <!-- Toggle Switch -->
+    <div class="switch-container">
+      <div class="switch-text">Toggle Fahrenheit</div>
+      <label class="switch">
+        <input class="checkbox" type="checkbox">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </div>
+</body>
+
+</html>
