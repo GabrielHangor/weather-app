@@ -1,6 +1,8 @@
 import './style.css';
 import datactrl from './modules/datactrl';
 import uictrl from './modules/uictrl';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 datactrl
   .getData()

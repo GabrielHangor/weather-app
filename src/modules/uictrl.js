@@ -30,7 +30,7 @@ function getCheckBoxState() {
 
 function populateTheDOM(data, units) {
   UISelectors.description.textContent = data.description;
-  UISelectors.city.textContent = data.city;
+  UISelectors.city.textContent = `${data.city}, ${data.country}`;
   UISelectors.date.textContent = data.date;
   UISelectors.temp.textContent = units === 'metric' ? `${data.temp}°C` : `${data.temp}°F`;
   UISelectors.feelsLike.textContent =

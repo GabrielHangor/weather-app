@@ -121,6 +121,7 @@ body {
 .sunset {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   column-gap: 1rem;
   animation: fade ease 0.3s;
 }
@@ -243,4 +244,61 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    width: 98%;
+    height: 98%;
+  }
+
+  .secondary-info {
+    width: 150px;
+  }
+
+  .main-info {
+    row-gap: 1rem;
+  }
+
+  .input-container {
+    width: 90%;
+  }
+
+  .inner-container {
+    width: 100%;
+  }
+
+  .error-container {
+    width: 90%;
+  }
+
+  .weather-description,
+  .city {
+    font-size: 2rem;
+  }
+
+  .temp {
+    font-size: 3rem;
+  }
+
+  .feels-like > i,
+  .humidity > i,
+  .wind-speed > i,
+  .sunrise > i,
+  .sunset > i {
+    font-size: 2rem;
+  }
+
+  .temperature,
+  .humidity-value,
+  .wind-speed-value,
+  .sunrise-value,
+  .sunset-value {
+    font-size: 1.5rem;
+  }
+
+  .inner-container {
+    height: 70%;
+    align-items: stretch;
+  }
 }
