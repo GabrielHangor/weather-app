@@ -13,6 +13,7 @@ const UISelectors = {
   sunSet: document.querySelector('.sunset-value'),
   mainInfo: document.querySelector('.main-info'),
   weatherIcon: document.querySelector('.weather-icon'),
+  errorContainer: document.querySelector('.error-container'),
 };
 
 function getUISelectors() {
@@ -45,4 +46,17 @@ function populateTheDOM(data, units) {
   );
 }
 
-export default { getUISelectors, getUserInput, getCheckBoxState, populateTheDOM };
+function displayError(error) {
+  console.log(error);
+
+  UISelectors.errorContainer.textContent = 'Enter The Correct City Name';
+  setTimeout(() => (UISelectors.errorContainer.textContent = ''), 2000);
+}
+
+export default {
+  getUISelectors,
+  getUserInput,
+  getCheckBoxState,
+  populateTheDOM,
+  displayError,
+};

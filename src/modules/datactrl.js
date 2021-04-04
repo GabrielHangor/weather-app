@@ -9,7 +9,6 @@ async function fetchWeatherData() {
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${APIKey}&units=${units}`
     );
     const responseCurrent = await response.json();
-    console.log(responseCurrent);
     return responseCurrent;
   } catch (error) {
     console.log(error);
@@ -82,6 +81,10 @@ function returnFormattedTime(value) {
 }
 
 function setNewLocation(value) {
+  if (value === '') {
+    return;
+  }
+
   city = value;
 }
 

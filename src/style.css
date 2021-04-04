@@ -1,13 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-html {
-  background: url('/src/assets/background.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
 body {
   box-sizing: border-box;
   margin: 0;
@@ -17,8 +9,9 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: white;
+  color: black;
   -webkit-font-smoothing: antialiased;
+  background: rgba(245, 245, 245, 0);
   text-rendering: optimizeLegibility;
 }
 
@@ -28,6 +21,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: fade ease 0.3s;
 }
 
 .input-container {
@@ -43,7 +37,7 @@ body {
   width: 90%;
   height: 30px;
   font-size: 1rem;
-  background-color: rgba(255, 255, 255, 0.507);
+  background-color: rgba(65, 57, 57, 0.192);
   border: none;
   border-radius: 0.5rem;
   font-family: 'Montserrat', sans-serif;
@@ -57,7 +51,7 @@ body {
 .input-container > i {
   font-size: 2rem;
   cursor: pointer;
-  color: rgba(255, 255, 255, 0.829);
+  color: black;
 }
 
 .inner-container {
@@ -65,6 +59,18 @@ body {
   display: flex;
   justify-content: space-between;
   align-content: flex-start;
+  transition: all 2s ease-in-out;
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 360px;
+  color: red;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .main-info,
@@ -75,34 +81,38 @@ body {
 }
 
 .secondary-info {
+  width: 250px;
+}
+
+.secondary-info {
   row-gap: 2rem;
 }
 
 .weather-description {
   font-size: 4rem;
+  animation: fade ease 0.3s;
 }
 
 .city {
   font-size: 3rem;
+  animation: fade ease 0.3s;
 }
 
 .weather-icon {
   align-self: center;
-  height: 200px;
-  width: 200px;
+  animation: fade ease 0.3s;
 }
 
 .temp {
   padding-top: 1rem;
   font-size: 5rem;
   align-self: center;
+  animation: fade ease 0.3s;
 }
 
 .current-date {
   font-size: 1.5rem;
 }
-
-
 
 .feels-like,
 .humidity,
@@ -110,8 +120,9 @@ body {
 .sunrise,
 .sunset {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   column-gap: 1rem;
+  animation: fade ease 0.3s;
 }
 
 .feels-like > i,
@@ -129,7 +140,7 @@ body {
 .sunset-div {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
 }
 
@@ -147,13 +158,22 @@ body {
 .sunrise-value,
 .sunset-value {
   font-size: 2rem;
+  animation: fade ease 0.3s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Toggle Swtich from https://www.w3schools.com/howto/howto_css_switch.asp */
 /* The switch - the box around the slider */
 .switch-container {
   display: flex;
-  padding-top: 2rem;
   column-gap: 1rem;
   justify-content: center;
   align-items: center;

@@ -18,14 +18,16 @@ function changeLocation() {
   datactrl.setNewLocation(userInput);
   datactrl
     .getData()
-    .then((data) => uictrl.populateTheDOM(data, datactrl.getCurrentUnitsSystem()));
+    .then((data) => uictrl.populateTheDOM(data, datactrl.getCurrentUnitsSystem()))
+    .catch((error) => uictrl.displayError(error));
 }
 
 function toggleFahrenheit() {
   datactrl.toggleFahrenheitOrCelsius(uictrl.getCheckBoxState());
   datactrl
     .getData()
-    .then((data) => uictrl.populateTheDOM(data, datactrl.getCurrentUnitsSystem()));
+    .then((data) => uictrl.populateTheDOM(data, datactrl.getCurrentUnitsSystem()))
+    .catch((error) => uictrl.displayError(error));
 }
 
 addEventListerners();
